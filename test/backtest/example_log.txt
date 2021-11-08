@@ -1,0 +1,2 @@
+{"sys. local time": "2021-11-08 18:29:54.255343", "sys. action": "portfolio initialization", "simulation": null, "portfolio": null}
+{"sys. local time": "2021-11-08 18:31:13.238914", "sys. action": "portfolio initialization", "simulation": null, "portfolio": null}

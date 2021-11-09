@@ -324,23 +324,6 @@ class PORTFOLIO(SLIPPAGE, SYSTEM) :
         # simulation. 
         self.verbose                                = True 
         
-        
-        ## ### Backtest log file 
-        # **Type** : string \n 
-        # **Default value** : None \n 
-        # **Description** : 
-        # Path+name to a file dedicated to store all the actions done by 
-        # the backtester.
-        self.trading_log_path             = None 
-        
-        ## ### Backtest first file write mode 
-        # **Type** : bool \n 
-        # **Default value** : None \n 
-        # **Description** : 
-        # If True and log file already exists, the backtest 
-        # system will overwrite it. 
-        self.trading_log_first_write_mode = "a"
-        
         self.log_step_every = 100 
 
         ## ### Database associated with the portfolio 

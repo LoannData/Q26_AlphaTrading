@@ -31,12 +31,13 @@ import time
 import datetime as dt 
 import sys, os 
 
-dirname  = os.path.dirname(__file__)
-filename = os.path.join(dirname,".")
-sys.path.append(filename)
-import quanTrade.client as client 
-import quanTrade.distant as distant 
-#from quanTrade.mbapi.system import SYSTEM
+
+from . import client 
+from . import distant 
+
+from ...system.database import DATABASE
+
+
 
 class TRADER : 
     """!
@@ -110,184 +111,42 @@ class TRADER :
         # STRATEGY class stored in the strategy python file. 
         self.strategy                     = None
         
-        ## ### Trading log path 
-        # **Type**: string \n 
-        # **Description**: \n 
-        # Path to the trading log
-        self.trading_log_path             = None 
-
-        ## ### Trading log first write mode
-        # **Type**: string \n 
-        # **Description**: \n 
-        # When restarting the live trading using an already written 
-        # trading log, the user has two choices : either he overwrite 
-        # the trading log file ("w"), either he append new data after the 
-        # already existing data ("a").   
-        self.trading_log_first_write_mode = None 
-        
-    
-    def set_telegram_listen_mode(self) : 
-        """! \private
-        **Description :** 
-            
-            Function that allows to se the telegram robot in listen mode. 
-            Note: this function is actualy not working because telegram doesn't 
-            allow two robots to communicate together. 
-        
-        **Parameters :** 
-            
-            None 
-        
-        **Returns :** 
-            
-            None 
-        
-        Do be done : 
 
         
-        """
-        
-        assert self.client.telegram_bot_mode == "listen", "error, bad telegram mode."
-        
-        self.client.telegram_bot.set_listen_mode()
-        
-        return 
 
-    
-    
-    def initialize_telegram_bot(self, 
-                                TOKEN = None, 
-                                mode  = "write") : 
-        """! \private
-        **Description :** 
-            
-            Function that allows to initialize the telegram robot. 
-            Note: this function is actualy not working because telegram doesn't 
-            allow two robots to communicate together. 
+    def set_database(self, 
+                     name      = "Unamed", 
+                     path      = "./", 
+                     model     = "sqlite3", 
+                     log       = True, 
+                     tables    = []): 
         
-        **Parameters :** 
-            
-            - TOKEN [str]          : Token associated with the Telegram bot 
-            - mode [str] = "write" : Action mode of the Telegram bot, it can be "write" or "listen" 
+        # We first create the DATABASE object within the right client 
+        self.client.database = DATABASE() 
+        self.client.database.db_path = path
+        self.client.database.db_name = name 
+        self.client.database.db_model = model
+        self.client.database.activate() 
+        self.client.database.connect() 
 
-        
-        **Returns :** 
-            
-            None 
-        
-        Do be done : 
+        # We create the standard logging system 
+        if log: 
 
-        
-        """
-        
-        assert self.client is not None, "Error, client object have to be defined before"
-        assert TOKEN is not None, "Error. No provided token."
-        
-        self.client.telegram_bot_mode = mode 
-        self.client.telegram_bot = distant.TELEGRAM_BOT()
-        self.client.telegram_bot.initialize() 
-        
-        return 
-    
-    def set_telegram_handler(self, 
-                             action    = "place order", 
-                             command   = "play") : 
-        """! \private
-        **Description :** 
-            
-            Function that allows to select Telegram bot action handler. 
-            Note: this function is actualy not working because telegram doesn't 
-            allow two robots to communicate together. 
-        
-        **Parameters :** 
-            
-            - action [str] = "place order" : Action to be sent to the Telegram bot. The choices are : 
-                - "place order" 
-                - "edit stoploss order" 
-                - "edit takeprofit order" 
-                - "cancel order" 
-                - "close position" 
-                - "transactions mode" : all the previous actions at the same time. 
-            - command [str] = "play" : Command to be typed by a Telegram user to acces to the Telegram bot signals. 
+            table_name = "log"
 
-        
-        **Returns :** 
-            
-            None 
-        
-        Do be done : 
+            structure = {
+                "date"     : "str", 
+                "action"   : "str", 
+                "args"     : "str", 
+                "kwargs"   : "str", 
+                "response" : "str"
+            }
 
+            self.client.database.create_table(table_name, structure)
         
-        """
-        
-        assert self.client is not None, "Error, client object have to be defined before"
-        self.client.telegram_bot.set_telegram_handler(action  = action, 
-                                               command = command)
-        
-        return 
-    
-    def enable_telegram_bot(self) : 
-        """! \private
-        **Description :** 
-            
-            Function that allows to enable de Telegram bot. 
-            Note: this function is actualy not working because telegram doesn't 
-            allow two robots to communicate together. 
-        
-        **Parameters :** 
-            
-            None
-        
-        **Returns :** 
-            
-            None 
-        
-        Do be done : 
+        for table in tables: 
 
-        
-        """
-        
-        assert self.client is not None, "Error, client object have to be defined before"
-        self.client.enabled_telegram_bot = True 
-        self.client.telegram_bot.start() 
-        
-        return 
-        
-        
-    def set_trading_log(self, 
-                        path    = None, 
-                        replace = False) : 
-        """! 
-        **Description :** 
-            
-            Function allowing to define the trading log properties. 
-        
-        **Parameters :** 
-            
-            - path [str]             : Path to the trading log file. If the file doesn't exist yet, the program will create it. 
-            - replace [bool] = False : If the trading log file already exists and replace = True, the program will overwrite the trading log file. 
-        
-        **Returns :** 
-            
-            None 
-        
-        Do be done : 
-
-        
-        """
-        
-        if path is not None : 
-            self.trading_log_path = path 
-        
-        assert self.trading_log_path is not None, "Error while reading the trading log file. Please provide a path." 
-        
-
-        if replace : 
-            self.trading_log_first_write_mode = "w"
-        else : 
-            self.trading_log_first_write_mode = "a"
-
-        return 
+            self.client.database.create_table(table["name"], table["structure"]) 
         
         
     
@@ -332,9 +191,6 @@ class TRADER :
         self.client = client.CLIENT_MAIN(self.client_name)
         self.client.configFile_connexion = self.client_connect_path 
         self.client.configFile_contract  = self.client_contract_path 
-        
-        if self.trading_log_path is not None : 
-            self.client.trading_log_path     = self.trading_log_path
         
     
     def set_strategy(self, 
@@ -396,10 +252,6 @@ class TRADER :
         """
         intro_dict = {"New Trading Session" : str(dt.datetime.now())}
         
-        with open(self.trading_log_path, self.trading_log_first_write_mode) as json_file : 
-            json.dump(intro_dict, json_file)
-            json_file.write("\n")
-        
         step_number = 0 
         
         while True : 
@@ -411,10 +263,6 @@ class TRADER :
                 "Step"       : step_number, 
                 "Local time" : local_time 
                 }
-            
-            with open(self.trading_log_path, "a") as json_file : 
-                json.dump(step_dict, json_file)
-                json_file.write("\n")
             
             self.strategy.run(self.client) 
             self.strategy.show(self.client) 

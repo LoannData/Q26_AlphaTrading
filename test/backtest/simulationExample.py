@@ -164,7 +164,7 @@ p = PORTFOLIO(initialDeposit                  = 100000,                # The ini
 p.addSymbol(symbol)
 
 # We define a path and filename for the log of the backtest
-p.trading_log_path = "./example_log.txt"
+# p.trading_log_path = "./example_log.txt"
 
 """ 
 ===============================================================================

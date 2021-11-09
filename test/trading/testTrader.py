@@ -15,8 +15,8 @@ import importlib
 
 
 # API connector importation 
-quanTradePath = "../"
-sys.path.append(quanTradePath)
+# quanTradePath = "../"
+# sys.path.append(quanTradePath)
 from alphatrading.trading.trader.trader import TRADER
 
 
@@ -26,7 +26,7 @@ from alphatrading.trading.trader.trader import TRADER
 
 t = TRADER()
 
-t.set_trading_log("./outputExample.txt", replace = True)
+# t.set_trading_log("./outputExample.txt", replace = True)
 
 t.set_client(name                 = "MT4", 
              client_connect_path  = "./client_connection.json", 
@@ -38,6 +38,14 @@ t.set_strategy(strategy_name = "strategyExample",
 t.client.newContract("EUR.USD")
 
 t.strategy.volumeFactor = 1. 
+
+tables = []
+
+t.set_database(name="Example_simu", 
+               path="./", 
+               model="sqlite3", 
+               log = True, 
+               tables = tables)
 
 time.sleep(10)
 

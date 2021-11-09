@@ -355,44 +355,6 @@ class SIMULATION(ANALYSIS, WRITER) :
 
             self.portfolio[client_id].database.create_table(table["name"], table["structure"])
 
-        
-
-    
-    # def set_backtest_log(self, 
-    #                      portfolioID = 0,
-    #                      path        = None, 
-    #                      replace     = False) : 
-    #     """! 
-    #     **Description :** 
-            
-    #         Function allowing to define the trading log properties. 
-        
-    #     **Parameters :** 
-            
-    #         - path [str]             : Path to the trading log file. If the file doesn't exist yet, the program will create it. 
-    #         - replace [bool] = False : If the trading log file already exists and replace = True, the program will overwrite the trading log file. 
-        
-    #     **Returns :** 
-            
-    #         None 
-        
-    #     Do be done : 
-
-        
-    #     """
-        
-    #     if path is not None : 
-    #         self.portfolio[portfolioID].trading_log_path = path 
-        
-    #     assert self.portfolio[portfolioID].trading_log_path is not None, "Error while reading the trading log file. Please provide a path." 
-        
-
-    #     if replace : 
-    #         self.portfolio[portfolioID].trading_log_first_write_mode = "w"
-    #     else : 
-    #         self.portfolio[portfolioID].trading_log_first_write_mode = "a"
-
-    #     return 
 
     
     def parametersCheck(self) : 

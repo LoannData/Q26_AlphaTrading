@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
 """! 
 =============================================================
 Q26 - QuanTester Python File

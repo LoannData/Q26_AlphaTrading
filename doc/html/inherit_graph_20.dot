@@ -1,0 +1,12 @@
+digraph "Graphical Class Hierarchy"
+{
+ // LATEX_PDF_SIZE
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  rankdir="LR";
+  Node14 [label="SLIPPAGE",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classalphatrading_1_1simulation_1_1backtester_1_1models_1_1slippage_1_1SLIPPAGE.html",tooltip=" "];
+  Node14 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node1 [label="PORTFOLIO",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classalphatrading_1_1simulation_1_1backtester_1_1portfolio_1_1PORTFOLIO.html",tooltip=" "];
+  Node0 [label="SYSTEM",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classalphatrading_1_1simulation_1_1backtester_1_1system_1_1SYSTEM.html",tooltip=" "];
+  Node0 -> Node1 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+}

@@ -1,5 +1,6 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*- 
+""" 
+
+"""
 
 
 def compareHour(hour1, operator, hour2) : 

@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['margincalltreeshold_757',['marginCallTreeshold',['../classalphatrading_1_1simulation_1_1backtester_1_1portfolio_1_1PORTFOLIO.html#a23daf2d0aa17f7599f8d0de4a533a5e9',1,'alphatrading::simulation::backtester::portfolio::PORTFOLIO']]],
+  ['margincurrency_758',['marginCurrency',['../classalphatrading_1_1simulation_1_1backtester_1_1symbol_1_1SYMBOL.html#abffdb244118559384a16382230af3dee',1,'alphatrading::simulation::backtester::symbol::SYMBOL']]],
+  ['marginlevel_759',['marginLevel',['../classalphatrading_1_1simulation_1_1backtester_1_1portfolio_1_1PORTFOLIO.html#a604f83d2f1f4aaaaf294cc616975a0e1',1,'alphatrading::simulation::backtester::portfolio::PORTFOLIO']]],
+  ['marginminimum_760',['marginMinimum',['../classalphatrading_1_1simulation_1_1backtester_1_1portfolio_1_1PORTFOLIO.html#a1c703c357b8bedde5d839821d37cc62e',1,'alphatrading::simulation::backtester::portfolio::PORTFOLIO']]],
+  ['marginpercentage_761',['marginPercentage',['../classalphatrading_1_1simulation_1_1backtester_1_1symbol_1_1SYMBOL.html#ab0ed24a93ef4ccf48afac3781f412da7',1,'alphatrading::simulation::backtester::symbol::SYMBOL']]],
+  ['marginrequestmethod_762',['marginRequestMethod',['../classalphatrading_1_1simulation_1_1backtester_1_1symbol_1_1SYMBOL.html#a4c78638713fef7584fec699b7f36347e',1,'alphatrading::simulation::backtester::symbol::SYMBOL']]],
+  ['marketbreaklist_763',['marketBreakList',['../classalphatrading_1_1simulation_1_1backtester_1_1data_1_1PRICE.html#a132be36260bbcb2c2c167a04fe10fa0e',1,'alphatrading::simulation::backtester::data::PRICE']]],
+  ['marketclosinghour_764',['marketClosingHour',['../classalphatrading_1_1simulation_1_1backtester_1_1data_1_1PRICE.html#ab13a9e8a6db175768b4e368ad3ee59b8',1,'alphatrading::simulation::backtester::data::PRICE']]],
+  ['marketlunch_765',['marketLunch',['../classalphatrading_1_1simulation_1_1backtester_1_1data_1_1PRICE.html#ace549963c5563bccc1fbca05d46b4704',1,'alphatrading::simulation::backtester::data::PRICE']]],
+  ['marketopeninghour_766',['marketOpeningHour',['../classalphatrading_1_1simulation_1_1backtester_1_1data_1_1PRICE.html#ad1a1c4329adc3b0acb3ba2ec439482aa',1,'alphatrading::simulation::backtester::data::PRICE']]],
+  ['marketstate_767',['marketState',['../classalphatrading_1_1simulation_1_1backtester_1_1symbol_1_1SYMBOL.html#aa0606a59b55ace47e3e7b5d428f362d1',1,'alphatrading::simulation::backtester::symbol::SYMBOL']]],
+  ['marketstatus_768',['marketStatus',['../classalphatrading_1_1simulation_1_1backtester_1_1data_1_1PRICE.html#a52dc307284bec8baf3982980000a9495',1,'alphatrading::simulation::backtester::data::PRICE']]],
+  ['markettimezone_769',['marketTimeZone',['../classalphatrading_1_1simulation_1_1backtester_1_1data_1_1PRICE.html#a6ce6926a989656db2a02ad5014d6b8f9',1,'alphatrading::simulation::backtester::data::PRICE']]],
+  ['maxhstdatasize_770',['maxHstDataSize',['../classalphatrading_1_1simulation_1_1backtester_1_1simulation_1_1SIMULATION.html#af757bfcb1074d9a27956fc21262a17d8',1,'alphatrading::simulation::backtester::simulation::SIMULATION']]],
+  ['maximalvolume_771',['maximalVolume',['../classalphatrading_1_1simulation_1_1backtester_1_1symbol_1_1SYMBOL.html#a02b48b91f0dc36e47374f4ba37185964',1,'alphatrading::simulation::backtester::symbol::SYMBOL']]],
+  ['maximumconsecutivegain_772',['maximumConsecutiveGain',['../classalphatrading_1_1simulation_1_1backtester_1_1portfolio_1_1PORTFOLIO.html#a077d3da7b69803e2f237f23fb67c62b5',1,'alphatrading::simulation::backtester::portfolio::PORTFOLIO']]],
+  ['maximumconsecutiveloss_773',['maximumConsecutiveLoss',['../classalphatrading_1_1simulation_1_1backtester_1_1portfolio_1_1PORTFOLIO.html#a17b454130e766c4cb4c9ec7bb0b45756',1,'alphatrading::simulation::backtester::portfolio::PORTFOLIO']]],
+  ['maximumdrawdown_774',['maximumDrawDown',['../classalphatrading_1_1simulation_1_1backtester_1_1portfolio_1_1PORTFOLIO.html#a2ff99e69292c319d643111a190608613',1,'alphatrading::simulation::backtester::portfolio::PORTFOLIO']]],
+  ['maximumnumberofconsecutivegains_775',['maximumNumberOfConsecutiveGains',['../classalphatrading_1_1simulation_1_1backtester_1_1portfolio_1_1PORTFOLIO.html#ae0d212f249d5fc7ea45c089eb8d5934e',1,'alphatrading::simulation::backtester::portfolio::PORTFOLIO']]],
+  ['maximumprofit_776',['maximumProfit',['../classalphatrading_1_1simulation_1_1backtester_1_1portfolio_1_1PORTFOLIO.html#aab0d88fe92cfa90a6c468309670a45cd',1,'alphatrading::simulation::backtester::portfolio::PORTFOLIO']]],
+  ['minimalvolume_777',['minimalVolume',['../classalphatrading_1_1simulation_1_1backtester_1_1symbol_1_1SYMBOL.html#a69a5bf5e181207a2cf0a65a95e08ce8a',1,'alphatrading::simulation::backtester::symbol::SYMBOL']]],
+  ['minimumbalance_778',['minimumBalance',['../classalphatrading_1_1simulation_1_1backtester_1_1portfolio_1_1PORTFOLIO.html#a81fec72c023e3324c934cb7cf1812fb5',1,'alphatrading::simulation::backtester::portfolio::PORTFOLIO']]]
+];

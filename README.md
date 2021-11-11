@@ -3,8 +3,8 @@
 The **Q26 Alpha-Trading** tool is an **open-source python library** designed to develop, test and run **algorithmic trading strategies** 
 inside a normalized, free and fully customizable environment.  This tool include numerous sub-modules the main ones of which 
 are: 
-- **[Backtest module](/_alphatrading/module_backtest)**
-- **[Live trading module](/_alphatrading/module_livetrading)** 
+- **[Backtest module](https://loanndata.github.io//_alphatrading/module_backtest)**
+- **[Live trading module](https://loanndata.github.io//_alphatrading/module_livetrading)** 
 - **[Data analysis system (soon)]()** 
 - **[Data loader system (soon)]()**
   
@@ -20,7 +20,7 @@ Although still in development, the **Alpha-Trading** library is already function
 - Both tools include a **fully customizable SQLite3 logging system** perfect for current or future data analyses 
 - Live trading module allows to **send and receive trading signals** with less than 1 second latency all over the world (soon)
   
-To learn to get use the **Alpha-Trading** tool, visit the following page: **[Hands-on](/_alphatrading/handson)** 
+To learn to get use the **Alpha-Trading** tool, visit the following page: **[Hands-on](https://loanndata.github.io//_alphatrading/handson)** 
   
 The **source code** is available **[here](https://github.com/LoannData/Q26_AlphaTrading)**
 

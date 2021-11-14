@@ -5,5 +5,6 @@ q26_alphatrading.egg-info/
 */__pycache__/*
 *.pyc 
 *-info
+*.db
 
 

@@ -164,6 +164,13 @@ class SIMULATION(ANALYSIS, WRITER) :
         # the code will print the simulation advancement and run the function .show() in 
         # each strategy.STRAGEY() class. 
         self.logEvery = 100 
+
+        ## ### Hide warnings 
+        # **Type**: boolean \n 
+        # **Defaut value** : False \n 
+        # **Description**: 
+        # If True, all the simulation warnings will be ignored. 
+        self.hideWarnings = False 
         
 
 
@@ -323,8 +330,45 @@ class SIMULATION(ANALYSIS, WRITER) :
                      name      = "Unamed", 
                      path      = "./", 
                      model     = "sqlite3", 
-                     log       = True, 
+                     log       = False, 
                      tables    = []): 
+        """! 
+        **Description :** 
+            
+            This function allows to create a database associated with a PORTFOLIO indexed with the 
+            **client_id** variable. If this method is not called, no database will be created. 
+        
+        **Parameters :** 
+            
+            - client_id = 0     [int]: Index of the current portfolio 
+            - name = "Unamed"   [str]: Name of the database file as it will be saved on the user system 
+            - path = "./"       [str]: Path at which the database will be saved on the system 
+            - model = "sqlite3" [str]: Model of database to be used. 
+                                       The choices are: 
+                                            - "sqlite3": A light and easy-to-use database model 
+            - log = False       [bool]: If True, the system will generate a table named **log** in which 
+                                        each action element stored in the list PORTFOLIO.trading_log_actions 
+                                        will be stored at each simulation time step.  
+            - tables = [] [list(dict)]: This parameters allows the user to create custom tables to his/her database. 
+                                        Each element of the list **tables** has a dictionnary structure as 
+                                        here below: 
+                                          {"name"     : "custom_table_name", 
+                                           "structure": structure} 
+                                        where the **name** key refers to the name of the custom table as it will be 
+                                        stored in the database and the key **structure** is itself another dictionnary of 
+                                        the following structure: 
+                                           {"attribute_name_1" : "pythonic-type", 
+                                            "attribute_name_2" : "pythonic-type", 
+                                            ...}
+                                        where the keys refers to the name of the columns to be stored in the table (note that 
+                                        space character is not allowed in the keys, otherwise one will lead to an error in the 
+                                        database module), and the associated values refers to the data type to be stored (in 
+                                        python3 format and wrapped in a string character).
+        
+        **Returns :** 
+            
+            None 
+        """
         
         # We first create the DATABASE object within the right client 
         self.portfolio[client_id].database = DATABASE() 
@@ -348,6 +392,7 @@ class SIMULATION(ANALYSIS, WRITER) :
             }
 
             self.portfolio[client_id].database.create_table(table_name, structure)
+            self.portfolio[client_id].log = True 
         
         for table in tables: 
 
@@ -406,6 +451,12 @@ class SIMULATION(ANALYSIS, WRITER) :
                 - Find a way to parallelise simulation inside this function]
         
         """ 
+        # Ignore warnings if necessary 
+        if self.hideWarnings: 
+            import warnings 
+            warnings.filterwarnings("ignore")
+
+
         # We initiate the portfolios 
         self.initiatePortfolios(mode = mode, idx = idx, latency = latency)
         

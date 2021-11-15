@@ -16,7 +16,7 @@ import datetime as dt
 class SYSTEM : 
     
     def write_log(self, action, nargs, args, kwargs, result) : 
-        if action in self.trading_log_actions : 
+        if action in self.trading_log_actions and self.log and (self.database is not None): 
 
             arguments = [
                 str(dt.datetime.now()), 
@@ -29,7 +29,7 @@ class SYSTEM :
             self.database.insert_element("log", arguments)
                 
     def init_write_log(self, action, nargs, args, kwargs, mode = "a") : 
-        if action in self.trading_log_actions : 
+        if action in self.trading_log_actions and self.log and (self.database is not None): 
 
             arguments = [
                 str(dt.datetime.now()), 

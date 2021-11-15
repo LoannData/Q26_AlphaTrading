@@ -325,9 +325,28 @@ class PORTFOLIO(SLIPPAGE, SYSTEM) :
         self.log_step_every = 100 
 
         ## ### Database associated with the portfolio 
+        # **Type**: alphatrading.system.database.DATABASE \n 
+        # **Description**: \n 
+        # This object corresponds to the client connector to the 
+        # simulated portfolio database
         self.database = None
+
+        ## ### Add a default log to the database
+        # **Type**: boolean \n 
+        # **Description** : \n 
+        # If True, a default log table will be considered in the database and all 
+        # the actions stored in the **trading_log_actions** list will be written in 
+        # the portfolio database at each simulation time step. One should use it 
+        # only for **debug** mode.  
+        self.log = False 
         
-        
+        ## ### Trading log actions 
+        # **Type**: list(string) \n 
+        # **Description**: \n 
+        # This list contains a list of actions which will be recorded in the log 
+        # table for the database if the attribute **self.log** is set to True. 
+        # Each element of the list record a specific action but all the elements 
+        # follows the same structure in the default log table.  
         self.trading_log_actions = ["portfolio initialization",
                                     "portfolio step",
                                     "place order", 
@@ -1523,7 +1542,8 @@ class PORTFOLIO(SLIPPAGE, SYSTEM) :
     @SYSTEM.init
     def initiate(self, simulation = None, portfolio = None) : 
         
-        return self.trading_log_first_write_mode
+        return 
+        # return self.trading_log_first_write_mode
         
         
     

@@ -2,6 +2,8 @@
 
 """
 import sqlite3
+import numpy as np 
+import math 
 
 class SQL: 
 
@@ -224,6 +226,29 @@ class SQL:
         Returns: 
             None  
         """
+        # Check if there are non-common numbers in the list of numbers 
+        # such as infinity values 
+        # print (value)
+        # print (type(value[-2]))
+
+        for i in range(len(value)):
+            val = value[i] 
+            if not type(val) == str: 
+                if np.isinf(val) or math.isinf(val): 
+                    # print("Cond1")
+                    if val > 1e32: 
+                        # print("Cond1.1")
+                        value[i] = "Inf"
+                    elif val < -1e32: 
+                        # print("Cond1.2")
+                        value[i] = "-Inf"
+                    else: 
+                        # print("Cond1.3")
+                        value[i] = "+-Inf"
+                elif np.isnan(val): 
+                    value[i] = "NaN"
+        
+        # print (value)
 
         last_id = self.get_id_list(table)[-1]
         value = [last_id+1]+value 

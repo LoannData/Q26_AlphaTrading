@@ -237,8 +237,9 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a338f162d9a5dc34e491d97e15d5d8430"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a64dbaa3229ec575b68ec333442e10cee"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classalphatrading_1_1simulation_1_1backtester_1_1portfolio_1_1PORTFOLIO.html#a64dbaa3229ec575b68ec333442e10cee">database</a></td></tr>
 <tr class="separator:a64dbaa3229ec575b68ec333442e10cee"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3ee65ef078f407d29d5145bb1479a54f"><td class="memItemLeft" align="right" valign="top"><a id="a3ee65ef078f407d29d5145bb1479a54f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>trading_log_actions</b></td></tr>
+<tr class="memitem:ab09a63eb35b270b5cdbead1983ebdccb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classalphatrading_1_1simulation_1_1backtester_1_1portfolio_1_1PORTFOLIO.html#ab09a63eb35b270b5cdbead1983ebdccb">log</a></td></tr>
+<tr class="separator:ab09a63eb35b270b5cdbead1983ebdccb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ee65ef078f407d29d5145bb1479a54f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classalphatrading_1_1simulation_1_1backtester_1_1portfolio_1_1PORTFOLIO.html#a3ee65ef078f407d29d5145bb1479a54f">trading_log_actions</a></td></tr>
 <tr class="separator:a3ee65ef078f407d29d5145bb1479a54f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classalphatrading_1_1simulation_1_1backtester_1_1models_1_1slippage_1_1SLIPPAGE"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classalphatrading_1_1simulation_1_1backtester_1_1models_1_1slippage_1_1SLIPPAGE')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="classalphatrading_1_1simulation_1_1backtester_1_1models_1_1slippage_1_1SLIPPAGE.html">SLIPPAGE</a></td></tr>
 <tr class="memitem:aac0373bf371f5d5f7c46d1b3bbad133f inherit pub_attribs_classalphatrading_1_1simulation_1_1backtester_1_1models_1_1slippage_1_1SLIPPAGE"><td class="memItemLeft" align="right" valign="top"><a id="aac0373bf371f5d5f7c46d1b3bbad133f"></a>
@@ -932,6 +933,9 @@ Else, the function returns a list of Falses, of size 3.
       </table>
 </div><div class="memdoc">
 <h3>Database associated with the portfolio</h3>
+<p><b>Type</b>: <a class="el" href="classalphatrading_1_1system_1_1database_1_1DATABASE.html">alphatrading.system.database.DATABASE</a> <br  />
+ <b>Description</b>: <br  />
+ &#160;This object corresponds to the client connector to the simulated portfolio database </p>
 
 </div>
 </div>
@@ -1078,6 +1082,25 @@ Else, the function returns a list of Falses, of size 3.
  <b>Defaut value</b> : 1 <br  />
  <b>Description</b> : <br  />
  A selected leverage. </p>
+
+</div>
+</div>
+<a id="ab09a63eb35b270b5cdbead1983ebdccb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab09a63eb35b270b5cdbead1983ebdccb">&#9670;&nbsp;</a></span>log</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">log</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<h3>Add a default log to the database</h3>
+<p><b>Type</b>: boolean <br  />
+ <b>Description</b> : <br  />
+ &#160;If True, a default log table will be considered in the database and all &#160;the actions stored in the <b>trading_log_actions</b> list will be written in the portfolio database at each simulation time step. One should use it only for <b>debug</b> mode. <br  />
+ </p>
 
 </div>
 </div>
@@ -1342,6 +1365,25 @@ Else, the function returns a list of Falses, of size 3.
 <p><b>Type</b> : boolean <br  />
  <b>Description</b> : <br  />
  If False, trading is unauthorised. </p>
+
+</div>
+</div>
+<a id="a3ee65ef078f407d29d5145bb1479a54f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ee65ef078f407d29d5145bb1479a54f">&#9670;&nbsp;</a></span>trading_log_actions</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">trading_log_actions</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<h3>Trading log actions</h3>
+<p><b>Type</b>: list(string) <br  />
+ <b>Description</b>: <br  />
+ &#160;This list contains a list of actions which will be recorded in the log table for the database if the attribute <b>self.log</b> is set to True. Each element of the list record a specific action but all the elements follows the same structure in the default log table. <br  />
+ </p>
 
 </div>
 </div>

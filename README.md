@@ -20,7 +20,7 @@ Although still in development, the **Alpha-Trading** library is already function
 - Both tools include a **fully customizable SQLite3 logging system** perfect for current or future data analyses 
 - Live trading module allows to **send and receive trading signals** with less than 1 second latency all over the world (soon)
   
-To learn to get use the **Alpha-Trading** tool, visit the following page: **[Hands-on](https://loanndata.github.io//_alphatrading/handson)** 
+To learn to get use the **Alpha-Trading** tool, visit the following page: **[Hands-on](https://loanndata.github.io/_alphatrading/handson)** 
   
 The **source code** is available **[here](https://github.com/LoannData/Q26_AlphaTrading)**
 

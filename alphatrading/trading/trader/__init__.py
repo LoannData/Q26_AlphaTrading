@@ -1,3 +1,5 @@
-""" 
-Package implementing live trading functionalities
+"""! 
+
+# Trader module 
+
 """

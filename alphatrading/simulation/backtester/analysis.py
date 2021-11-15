@@ -144,3 +144,152 @@ class ANALYSIS :
             
         return fig, ax 
         # plt.show()
+    
+    def get_basic_results(self, 
+                          client_id = 0):
+    # def get_basic_results(self, client): 
+        
+        # We retrieve the indexed refered portfolio 
+        client = self.portfolio[client_id] 
+
+        # Number of Winners/Loosers 
+        n_winners = 0 
+        n_winners_long = 0 
+        n_winners_short = 0
+        n_loosers = 0 
+        n_loosers_long = 0 
+        n_loosers_short = 0
+        for position in client.closedPositions: 
+            if position.closed: 
+                if position.profit > 0: 
+                    n_winners += 1 
+                    if position.action == "long": 
+                        n_winners_long += 1 
+                    elif position.action == "short": 
+                        n_winners_short += 1
+                elif position.profit < 0: 
+                    n_loosers += 1 
+                    if position.action == "long": 
+                        n_loosers_long += 1 
+                    elif position.action == "short": 
+                        n_loosers_short += 1
+
+        
+        # Trades duration 
+        trades_duration = [] 
+        for position in client.closedPositions: 
+            if position.closed: 
+                trades_duration.append(position.possibleCloseDate - position.executionDate)
+        avg_trade_duration = np.mean(trades_duration)
+        min_trade_duration = np.min(trades_duration)
+        max_trade_duration = np.max(trades_duration)
+
+        # Profit factor 
+        cumulated_gains = 0 
+        cumulated_losses = 0
+        for position in client.closedPositions: 
+            if position.closed: 
+                if position.profit > 0: 
+                    cumulated_gains += position.profit
+                elif position.profit < 0:  
+                    cumulated_losses += position.profit
+        PF = cumulated_gains/cumulated_losses
+        winners_ratio = cumulated_gains/(cumulated_gains + abs(cumulated_losses))
+        loosers_ratio = abs(cumulated_losses)/(cumulated_gains + abs(cumulated_losses))
+
+        # Average gains 
+        average_winners = cumulated_gains / n_winners 
+        average_winners_percentage = average_winners / client.initialDeposit * 100 
+        average_loosers = cumulated_losses / n_loosers
+        average_loosers_percentage = average_loosers / client.initialDeposit * 100 
+
+        # P&L global 
+        PL = 0 
+        for position in client.closedPositions:
+            if position.closed:
+                PL += position.profit
+
+        # P&L per symbol 
+        # symbol_list = list(client.symbols.keys())
+        # PL_per_symbol = np.zeros(len(symbol_list)) 
+        # Equity_per_symbol = [client.initialDeposit]
+
+        # for position in client.closedPositions:
+        #     if position.closed: 
+        #         index = 0 
+        #         while symbol_list[index] != position.symbol: 
+        #             index += 1 
+        #         PL_per_symbol[index] += position.profit 
+        #         Equity_per_symbol.append(Equity_per_symbol[-1] + position.profit)
+        
+        # Equity_per_symbol = Equity_per_symbol[1:]
+        
+        # print (PL_per_symbol)
+
+
+
+        # Shapr ratio per ticker 
+        # strategy_yield_percentage = PL/client.initialDeposit*100
+        # strategy_volatility_percentage = np.std((np.array(client.equityCurve) - client.initialDeposit)/client.initialDeposit*100)
+
+        # strategy_yield_percentage_per_symbol = [] 
+        # strategy_volatility_percentage_per_symbol = []
+        # for i in range(len(list(client.symbols.keys()))): 
+        #     symbol = list(client.symbols.keys())[i]
+        #     strategy_yield_percentage_per_symbol.append(PL_per_symbol[i] / client.initialDeposit * 100)
+        #     strategy_yield_percentage_per_symbol.append(np.std((np.array(Equity_per_symbol) - client.initialDeposit)/client.initialDeposit*100))
+
+        # tickers_yield_percentage = [] 
+
+        # pricer_start = self.priceTable.iloc(self.startIndex)
+        # pricer_end   = self.priceTable.iloc(self.stopIndex)
+        # for key in list(pricer_start.keys()): 
+        #     start_price = pricer_start[key]["askopen"]
+        #     stop_price  = pricer_end[key]["askclose"] 
+        #     tickers_yield_percentage.append((stop_price - start_price)/start_price)
+        
+
+        
+
+        # sharp_ratio_per_symbol = [] 
+        # for i in range(len(client.symbols.keys())): 
+        #     sharp_ratio_per_symbol.append((strategy_yield_percentage - tickers_yield_percentage[i])/strategy_volatility_percentage)
+
+        # print (sharp_ratio_per_symbol)
+        # start_price = self.priceTable.priceList
+
+
+        results = {
+            "Symbols"                        : [x for x in client.symbols.keys()], 
+            "Start date"                     : str(self.priceTable.priceList[0].date[self.startIndex]),
+            "End date"                       : str(client.getLastPrice(list(client.symbols.keys())[0])["date"]),
+            "Initial Deposit"                : client.initialDeposit,
+            "P&L"                            : PL, #client.balance - client.initialDeposit, 
+            "P&L in percentage"              : PL/client.initialDeposit*100,
+            "Cumulated gains"                : cumulated_gains, 
+            "Cumulated losses"               : cumulated_losses,
+            "Profit factor"                  : PF,
+            "Winners ratio"                  : winners_ratio,
+            "Loosers ratio"                  : loosers_ratio,
+            "Number of transactions"         : len(client.closedPositions), 
+            "Number of winners"              : n_winners, 
+            "Number of winners long"         : n_winners_long, 
+            "Number of winners short"        : n_winners_short, 
+            "Winners average gain"           : average_winners, 
+            "Winners average gain percentage": average_winners_percentage, 
+            "Number of loosers"              : n_loosers, 
+            "Number of loosers long"         : n_loosers_long, 
+            "Number of loosers short"        : n_loosers_short, 
+            "Loosers average loss"           : average_loosers, 
+            "Loosers average loss percentage": average_loosers_percentage,
+            "Average trade duration"         : str(avg_trade_duration), 
+            "Min trade duration"             : str(min_trade_duration), 
+            "Max trade duration"             : str(max_trade_duration), 
+            "Number trades still open"       : len(client.openPositions), 
+            "Maximum drawdown"               : client.currentDrawDown, 
+            # "Sharp ratio per symbol"         : sharp_ratio_per_symbol, 
+            # "Sharp ratio"                    : np.mean(sharp_ratio_per_symbol)
+
+        }
+
+        return results 

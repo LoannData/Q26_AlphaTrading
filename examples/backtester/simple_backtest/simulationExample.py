@@ -218,7 +218,7 @@ sim.set_database(client_id=0,
                  name="sma_crossover_strategy_logfile", 
                  path="./", 
                  model="sqlite3", 
-                 log = True, 
+                 log = False, 
                  tables = tables)
 
 # Run of the simulation 
@@ -230,6 +230,9 @@ sim.run(mode = "linear")
 RESULTS STEP
 ===============================================================================
 """
+# We print some basic simulation results 
+results = sim.get_basic_results(client_id=0)
+print (results)
 # We write the results in a csv file 
 sim.writeClosedPositionsFile(index = 0)
 # We plot the equity curve 

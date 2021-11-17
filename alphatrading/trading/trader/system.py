@@ -88,7 +88,7 @@ class SYSTEM :
             nargs = {"symbolName" : 0, 
                      "orderID"    : 1}
             args = list(args)
-            args[1] = args[1].orderID
+            # args[1] = args[1].orderID
             self.write_log("close position", nargs, args, kwargs, str(result))
             return result 
         return func 
@@ -99,7 +99,7 @@ class SYSTEM :
             nargs = {"symbolName" : 0,
                      "orderID"    : 1}
             args = list(args)
-            args[1] = args[1].orderID
+            # args[1] = args[1].orderID
             self.write_log("edit stoploss order", nargs, args, kwargs, str(result))
             return result 
         return func 
@@ -110,7 +110,7 @@ class SYSTEM :
             nargs = {"symbolName" : 0,
                      "orderID"    : 1}
             args = list(args)
-            args[1] = args[1].orderID
+            # args[1] = args[1].orderID
             self.write_log("edit takeprofit order", nargs, args, kwargs, str(result))
             return result 
         return func 
@@ -121,7 +121,7 @@ class SYSTEM :
             nargs = {"symbolName" : 0,
                      "orderID"    : 1}
             args = list(args)
-            args[1] = args[1].orderID
+            # args[1] = args[1].orderID
             self.write_log("cancel order", nargs, args, kwargs, str(result))
             return result 
         return func 
@@ -129,8 +129,8 @@ class SYSTEM :
     def getActivePositions(function):
         def func(self, *args, **kwargs) : 
             result = function(self, *args, **kwargs)
-            for i in range(len(result)): 
-                result[i] = result[i].orderID
+            # for i in range(len(result)): 
+            #     result[i] = result[i].orderID
             nargs = {"symbolName" : 0}
             args = list(args)
             self.write_log("get active positions", nargs, args, kwargs, str(result))

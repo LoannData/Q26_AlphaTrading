@@ -1,0 +1,18 @@
+{
+    "EUR.USD" : {
+        "IBKR" : {
+            "symbol"   : "EUR",
+            "secType"  : "CASH", 
+            "exchange" : "IDEALPRO", 
+            "currency" : "USD"
+        },
+        "MT4" : {
+            "symbol"   : "EURUSD"
+        }
+    }, 
+    "GBP.JPY" : {
+        "MT4" : {
+            "symbol"   : "GBPJPY"
+        }
+    }
+}

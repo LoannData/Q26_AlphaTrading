@@ -334,6 +334,9 @@ class PRICE(SPREAD) :
                 See more here : https://docs.python.org/3.6/library/datetime.html#strftime-and-strptime-behavior 
                 Note : Even if days and hours are separated, the date format should be defined as if they were 
                 only separated by a space. 
+                Other options : 
+                    - "timestamp" if your time is unix timestamp formatted 
+                    - "ms-timestamp" if your time is ms-unix timestamp formatted (it is the case for Binance data)
             - volume [str] = None : 
                 volume datafile column name 
             - splitDaysHours [bool] = False :
@@ -426,8 +429,15 @@ class PRICE(SPREAD) :
             pass 
         try : 
             if not "split" in self.date_ : 
-                tempDate      = list(df[self.date_])
-                self.date     = [dt.datetime.strptime(x, self.dateFormat) for x in tempDate] 
+                if self.dateFormat == "ms-timestamp": 
+                    tempDate      = list(df[self.date_])
+                    self.date     = [pd.to_datetime(str(x),unit='ms').to_pydatetime() for x in tempDate] 
+                elif self.dateFormat == "timestamp": 
+                    tempDate      = list(df[self.date_])
+                    self.date     = [dt.datetime.fromtimestamp(x) for x in tempDate] 
+                else: 
+                    tempDate      = list(df[self.date_])
+                    self.date     = [dt.datetime.strptime(x, self.dateFormat) for x in tempDate] 
             else : 
                 locDate = self.date_.split("---")
                 days_  = locDate[1] 
@@ -439,7 +449,7 @@ class PRICE(SPREAD) :
                     self.date.append(dt.datetime.strptime(tempDays[i]+" "+tempHours[i], self.dateFormat))
         except : 
             print ("An error occured")
-            pass 
+            raise 
         try : 
             self.volume   = list(df[self.volume_])
         except : 

@@ -17,7 +17,7 @@ import matplotlib.pyplot as plt
 
 class STRATEGY : 
     """ 
-    The STYRATEGY class is imported in the SIMULATION class. 
+    The STRATEGY class is imported in the SIMULATION class. 
     
     Only 3 functions are important and executed in the backtester : 
         - __init__ : To declare the strategy object 

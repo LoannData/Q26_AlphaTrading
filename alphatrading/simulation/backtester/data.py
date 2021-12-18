@@ -1248,6 +1248,8 @@ class PRICE_TABLE :
                 locIndexIni -= 1
             if locIndexEnd_ > indexEnd : 
                 locIndexEnd -= 1 
+            
+            # print (locIndexIni, locIndexEnd)
 
             array_ = {"askopen"       : price.askOpen[locIndexIni : locIndexEnd],
                     "askhigh"         : price.askHigh[locIndexIni : locIndexEnd],

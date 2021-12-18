@@ -234,6 +234,11 @@ class SQL:
         for i in range(len(value)):
             val = value[i] 
             if not type(val) == str: 
+                # if type(val) == float: 
+                #     val = np.float(val) 
+                # elif type(val) == int: 
+                #     val = np.int(val)
+                # print ("VAL = ",val)
                 if np.isinf(val) or math.isinf(val): 
                     # print("Cond1")
                     if val > 1e32: 
